@@ -13,10 +13,19 @@ module.exports = class API {
 
   // insert a new user
   static async addNewUser(req, res) {
-    console.log(req.body)
     try {
       await Config.findOneAndUpdate({ "_type": "user" }, { $push: { users: { $each: [req.body], $position: 0 } } }, { new: true, strict: false })
-      res.status(200).json({ message: 'Add new user successfully!' })
+      res.status(201).json({ message: 'Add new user successfully!' })
+    } catch (err) {
+      res.status(404).json({ message: err.message })
+    }
+  }
+
+  // delete user in db
+  static async deleteUser(req, res) {
+    try {
+      await Config.findOneAndUpdate({ "_type": "user" }, { $pull: { users: { email: req.params.email } } }, { strict: false })
+      res.status(200).json({ message: 'User deleted successfully!' })
     } catch (err) {
       res.status(404).json({ message: err.message })
     }

@@ -12,4 +12,9 @@ export default class API {
     const res = await axios.post(url, user)
     return res.data
   }
+
+  static async deleteUser(email) {
+    const res = await axios.delete(`${url}/${email}`)
+    return res.data
+  }
 }
