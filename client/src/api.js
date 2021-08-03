@@ -7,4 +7,9 @@ export default class API {
     const res = await axios.get(url)
     return res.data
   }
+
+  static async addNewUser(user) {
+    const res = await axios.post(url, user)
+    return res.data
+  }
 }
