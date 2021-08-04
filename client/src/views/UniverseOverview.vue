@@ -68,7 +68,7 @@ export default {
         {
           text: 'Volume',
           align: 'start',
-          value: 'data_volume'
+          value: 'volume'
         },
         {
           text: 'Owner',
@@ -78,7 +78,7 @@ export default {
         {
           text: 'Updated Time',
           align: 'start',
-          value: 'universe_updated_time'
+          value: 'updated_time'
         }
       ],
       universes: []
@@ -87,22 +87,34 @@ export default {
   async created() {
     this.universeLoading = true
     const universes = await API.getAllUniverses()
-    console.log(universes)
+    this.universes = universes.map(e => {
+      return {
+        id: e._id,
+        name: e.name,
+        status: e.status,
+        volume: e.data_volume.toLocaleString('en'),
+        owner: e.access_control.owner,
+        updated_time: e.universe_updated_time
+      }
+    })
 
     this.universeLoading = false
   },
   methods: {
     downloadBtnClick() {
-      const header = ['email', 'role', 'last_login_time']
-      const usersSheet = XLSX.utils.json_to_sheet(this.users, { header })
-      usersSheet.A1.v = 'Email'
-      usersSheet.B1.v = 'Role'
-      usersSheet.C1.v = 'Last Login Time'
+      const header = ['id', 'name', 'status', 'volume', 'owner', 'updated_time']
+      const universesSheet = XLSX.utils.json_to_sheet(this.universes, { header })
+      universesSheet.A1.v = 'ID'
+      universesSheet.B1.v = 'Name'
+      universesSheet.C1.v = 'Status'
+      universesSheet.A1.v = 'Volume'
+      universesSheet.B1.v = 'Owner'
+      universesSheet.C1.v = 'Updated Time'
 
       const wb = XLSX.utils.book_new()
-      XLSX.utils.book_append_sheet(wb, usersSheet, 'accounts')
+      XLSX.utils.book_append_sheet(wb, universesSheet, 'universes')
       const timeTag = moment().format('YYYYMMDDHHmmss')
-      XLSX.writeFile(wb, `SL-${timeTag}-users.xlsx`)
+      XLSX.writeFile(wb, `SL-${timeTag}-universes.xlsx`)
     }
   }
 }
