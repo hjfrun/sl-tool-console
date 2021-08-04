@@ -43,7 +43,7 @@
               </v-btn>
               <v-btn color="cyan" dark class="mb-2" v-bind="attrs" v-on="on">
                 New User
-                <v-icon class="pl-2" dark> mdi-account-multiple-plus </v-icon>
+                <v-icon class="pl-2" dark> mdi-account-plus </v-icon>
               </v-btn>
             </template>
             <v-card>
@@ -124,6 +124,7 @@ import XLSX from 'xlsx'
 import API from '../api'
 
 export default {
+  name: 'UserTable',
   data() {
     return {
       alert: false,
