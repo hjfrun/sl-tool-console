@@ -47,7 +47,10 @@
                       :items="roles"
                       v-model="newUser.role"
                       label="Role"
+                      dense
                     ></v-select>
+                    <v-icon>info</v-icon>
+                    rw: read-write rights, for normal user
                   </v-card-text>
                   <v-card-actions>
                     <v-spacer></v-spacer>
