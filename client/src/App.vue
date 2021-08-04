@@ -13,6 +13,8 @@
         :items="users"
         :items-per-page="15"
         class="elevation-1"
+        :loading="userLoading"
+        loading-text="User Loading... Please wait"
       >
         <template v-slot:top>
           <v-toolbar flat>
@@ -119,6 +121,7 @@ export default {
   data() {
     return {
       alert: false,
+      userLoading: true,
       headers: [
         {
           text: 'Email',
@@ -163,6 +166,7 @@ export default {
     }
   },
   async created() {
+    this.userLoading = true
     const user = await API.getAllUsers()
     this.users = user.users.map(e => {
       if (Object.prototype.hasOwnProperty.call(e, 'last_login_time')) {
@@ -172,6 +176,7 @@ export default {
       }
       return e
     })
+    this.userLoading = false
   },
   methods: {
     close() {
