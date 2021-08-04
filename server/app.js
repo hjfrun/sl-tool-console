@@ -23,6 +23,6 @@ mongoose.connect(process.env.DB_URI, {
   .catch(e => console.log(e))
 
 // routes prefix
-app.use('/api/user', require('./routes/routes'))
+app.use('/api', require('./routes/routes'))
 
 app.listen(port, () => console.log(`Server running at http://localhost:${port}`))

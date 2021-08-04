@@ -4,8 +4,9 @@ const router = express.Router()
 
 const API = require('../controllers/api')
 
-router.get('/', API.fetchAllUsers)
-router.post('/', API.addNewUser)
-router.delete('/:email', API.deleteUser)
+router.get('/user/', API.fetchAllUsers)
+router.post('/user/', API.addNewUser)
+router.delete('/user/:email', API.deleteUser)
+router.get('/universe/', API.fetchAllUniverses)
 
 module.exports = router

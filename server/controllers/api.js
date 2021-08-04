@@ -30,4 +30,14 @@ module.exports = class API {
       res.status(404).json({ message: err.message })
     }
   }
+
+  // fetch all universes
+  static async fetchAllUniverses(req, res) {
+    try {
+      const universes = await Config.find({ "_type": "data_universe" }, { name: 1, status: 1, universe_updated_time: 1, data_volume: 1, 'access_control.owner': 1 })
+      res.status(200).json(universes)
+    } catch (err) {
+      res.status(404).json({ message: err.message })
+    }
+  }
 }

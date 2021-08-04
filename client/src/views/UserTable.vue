@@ -9,7 +9,7 @@
       :items-per-page="15"
       class="elevation-1"
       :loading="userLoading"
-      loading-text="User Loading... Please wait"
+      loading-text="Loading... Please wait"
       :search="search"
       :footer-props="{
         showFirstLastPage: true,
