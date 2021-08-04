@@ -6,7 +6,7 @@
 
     <v-main class="mx-5 mt-2">
       <v-alert type="warning" v-model="alert" dismissible>
-        We have this user already!
+        This user already exists, please check the account carefully!
       </v-alert>
       <v-data-table
         :headers="headers"
