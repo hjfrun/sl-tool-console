@@ -97,6 +97,7 @@
 
 <script>
 
+import moment from 'moment'
 import API from './api'
 
 export default {
@@ -149,7 +150,14 @@ export default {
   },
   async created() {
     const user = await API.getAllUsers()
-    this.users = user.users
+    this.users = user.users.map(e => {
+      if (Object.prototype.hasOwnProperty.call(e, 'last_login_time')) {
+        e.last_login_time = moment(e.last_login_time).format('YYYY-MM-DD HH:mm:ss')
+      } else {
+        e.last_login_time = 'Never'
+      }
+      return e
+    })
   },
   methods: {
     close() {
