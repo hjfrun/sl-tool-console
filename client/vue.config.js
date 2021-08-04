@@ -8,7 +8,7 @@ module.exports = {
   chainWebpack: config => {
     config.plugin('html')
       .tap(args => {
-        args[0].title = 'Social Mining Tool User Management'
+        args[0].title = 'SL - Admin'
         return args
       })
   }
