@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-app-bar app color="primary" dark>
-      <v-app-bar-title>User Management</v-app-bar-title>
+      <h3>User Management</h3>
     </v-app-bar>
 
     <v-main class="mx-5 mt-2">
@@ -16,6 +16,13 @@
         :loading="userLoading"
         loading-text="User Loading... Please wait"
         :search="search"
+        :footer-props="{
+          showFirstLastPage: true,
+          firstIcon: 'mdi-arrow-collapse-left',
+          lastIcon: 'mdi-arrow-collapse-right',
+          prevIcon: 'mdi-arrow-left',
+          nextIcon: 'mdi-arrow-right',
+        }"
       >
         <template v-slot:top>
           <v-toolbar flat>
