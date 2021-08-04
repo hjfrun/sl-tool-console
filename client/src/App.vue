@@ -41,7 +41,8 @@ export default {
       drawer: false,
       items: [
         { title: 'User Management', icon: 'mdi-account-multiple', link: '/' },
-        { title: 'Universe Overview', icon: 'mdi-database', link: '/universe-overview' }
+        { title: 'Universe Overview', icon: 'mdi-database', link: '/universe-overview' },
+        { title: 'About', icon: 'mdi-help-box', link: '/about' }
       ]
     }
   }
