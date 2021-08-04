@@ -22,7 +22,6 @@
             <v-dialog v-model="dialog" max-width="500px">
               <template v-slot:activator="{ on, attrs }">
                 <v-btn
-                  :loading="loading3"
                   dark
                   color="indigo"
                   class="mx-2 mb-2"
@@ -223,7 +222,8 @@ export default {
 
       const wb = XLSX.utils.book_new()
       XLSX.utils.book_append_sheet(wb, usersSheet, 'accounts')
-      XLSX.writeFile(wb, 'social mining tool users.xlsx')
+      const timeTag = moment().format('YYYYMMDDHHmmss')
+      XLSX.writeFile(wb, `SL-${timeTag}-users.xlsx`)
     }
   },
   watch: {
