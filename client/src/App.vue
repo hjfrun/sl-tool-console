@@ -22,6 +22,15 @@
             <v-dialog v-model="dialog" max-width="500px">
               <template v-slot:activator="{ on, attrs }">
                 <v-btn
+                  :loading="loading3"
+                  dark
+                  color="indigo"
+                  class="mx-2 mb-2"
+                  @click="downloadBtnClick"
+                  >Download
+                  <v-icon dark> mdi-download </v-icon>
+                </v-btn>
+                <v-btn
                   color="primary"
                   dark
                   class="mb-2"
@@ -44,6 +53,7 @@
                       required
                     ></v-text-field>
                     <v-select
+                      class="mt-4"
                       :items="roles"
                       v-model="newUser.role"
                       label="Role"
@@ -101,6 +111,7 @@
 <script>
 
 import moment from 'moment'
+import XLSX from 'xlsx'
 import API from './api'
 
 export default {
@@ -121,7 +132,7 @@ export default {
           value: 'role'
         },
         {
-          text: 'Last login time',
+          text: 'Last Login Time',
           align: 'end',
           value: 'last_login_time'
         },
@@ -202,6 +213,17 @@ export default {
         this.editedItem = Object.assign({}, this.emptyUser)
         this.editedIndex = -1
       })
+    },
+    downloadBtnClick() {
+      const header = ['email', 'role', 'last_login_time']
+      const usersSheet = XLSX.utils.json_to_sheet(this.users, { header })
+      usersSheet.A1.v = 'Email'
+      usersSheet.B1.v = 'Role'
+      usersSheet.C1.v = 'Last Login Time'
+
+      const wb = XLSX.utils.book_new()
+      XLSX.utils.book_append_sheet(wb, usersSheet, 'accounts')
+      XLSX.writeFile(wb, 'social mining tool users.xlsx')
     }
   },
   watch: {
