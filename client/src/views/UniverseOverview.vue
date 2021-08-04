@@ -52,33 +52,30 @@ export default {
       headers: [
         {
           text: 'ID',
-          align: 'start',
-          value: 'id'
+          value: 'id',
+          filterable: false
         },
         {
           text: 'Name',
-          align: 'start',
           value: 'name'
         },
         {
           text: 'Status',
-          align: 'start',
           value: 'status'
         },
         {
           text: 'Volume',
-          align: 'start',
-          value: 'volume'
+          value: 'volume',
+          filterable: false
         },
         {
           text: 'Owner',
-          align: 'start',
           value: 'owner'
         },
         {
           text: 'Updated Time',
-          align: 'start',
-          value: 'updated_time'
+          value: 'updated_time',
+          filterable: false
         }
       ],
       universes: []
