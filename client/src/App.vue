@@ -9,7 +9,7 @@
       <v-data-table
         :headers="headers"
         :items="users"
-        :items-per-page="10"
+        :items-per-page="15"
         class="elevation-1"
       >
         <template v-slot:top>
@@ -38,10 +38,11 @@
                     v-model="newUser.email"
                     label="Email"
                   ></v-text-field>
-                  <v-text-field
+                  <v-select
+                    :items="roles"
                     v-model="newUser.role"
                     label="Role"
-                  ></v-text-field>
+                  ></v-select>
                 </v-card-text>
                 <v-card-actions>
                   <v-spacer></v-spacer>
@@ -71,6 +72,7 @@
             </v-dialog>
           </v-toolbar>
         </template>
+        <!-- eslint-disable-next-line -->
         <template v-slot:item.actions="{ item }">
           <v-icon class="pl-3" small @click="deleteItem(item)">
             mdi-delete
@@ -122,8 +124,9 @@ export default {
       },
       emptyUser: {
         email: '',
-        role: ''
-      }
+        role: 'rw'
+      },
+      roles: ['admin', 'rw']
     }
   },
   async created() {
