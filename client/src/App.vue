@@ -5,6 +5,9 @@
     </v-app-bar>
 
     <v-main class="mx-5 mt-2">
+      <v-alert type="warning" v-model="alert" dismissible>
+        We have this user already!
+      </v-alert>
       <v-data-table
         :headers="headers"
         :items="users"
@@ -101,6 +104,7 @@ export default {
 
   data() {
     return {
+      alert: false,
       headers: [
         {
           text: 'Email',
@@ -156,17 +160,18 @@ export default {
     },
     async save() {
       if (this.$refs.form.validate()) {
-        // save new user to mongo db
-        await API.addNewUser(this.newUser)
-        // update the ui
-        const user = await API.getAllUsers()
-        this.users = user.users
-
-        this.dialog = false
-        // clean the dialog content
-        this.$nextTick(() => {
-          this.newUser = Object.assign({}, this.emptyUser)
-        })
+        // check for duplicate
+        const lowerCaseEmail = this.newUser.email.toLowerCase()
+        if (this.users.some(d => d.email.toLowerCase() === lowerCaseEmail)) {
+          this.alert = true
+        } else {
+          // save new user to mongo db
+          await API.addNewUser(this.newUser)
+          // update the ui
+          const user = await API.getAllUsers()
+          this.users = user.users
+        }
+        this.close()
       }
     },
     deleteItem(item) {
