@@ -1,11 +1,10 @@
 <template>
   <v-app>
     <v-app-bar app color="primary" dark>
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
       <v-app-bar-title>User Management</v-app-bar-title>
     </v-app-bar>
 
-    <v-main>
+    <v-main class="mx-5 mt-2">
       <v-data-table
         :headers="headers"
         :items="users"
@@ -33,24 +32,34 @@
                 <v-card-title>
                   <span class="text-h5">Add New User</span>
                 </v-card-title>
-                <v-card-text>
-                  <v-text-field
-                    v-model="newUser.email"
-                    label="Email"
-                  ></v-text-field>
-                  <v-select
-                    :items="roles"
-                    v-model="newUser.role"
-                    label="Role"
-                  ></v-select>
-                </v-card-text>
-                <v-card-actions>
-                  <v-spacer></v-spacer>
-                  <v-btn color="blue darken-1" text @click="close"
-                    >Cancel</v-btn
-                  >
-                  <v-btn color="blue darken-1" text @click="save">Save</v-btn>
-                </v-card-actions>
+                <v-form ref="form" v-model="valid" lazy-validation>
+                  <v-card-text>
+                    <v-text-field
+                      v-model="newUser.email"
+                      label="Email"
+                      :rules="emailRules"
+                      required
+                    ></v-text-field>
+                    <v-select
+                      :items="roles"
+                      v-model="newUser.role"
+                      label="Role"
+                    ></v-select>
+                  </v-card-text>
+                  <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn color="blue darken-1" text @click="close"
+                      >Cancel</v-btn
+                    >
+                    <v-btn
+                      color="blue darken-1"
+                      text
+                      @click="save"
+                      :disabled="!valid"
+                      >Save</v-btn
+                    >
+                  </v-card-actions>
+                </v-form>
               </v-card>
             </v-dialog>
             <v-dialog v-model="dialogDelete" max-width="500px">
@@ -120,12 +129,17 @@ export default {
       editedIndex: -1,
       newUser: {
         email: '',
-        role: ''
+        role: 'rw'
       },
+      valid: false,
       emptyUser: {
         email: '',
         role: 'rw'
       },
+      emailRules: [
+        v => !!v || 'E-mail is required',
+        v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) || 'E-mail must be valid'
+      ],
       roles: ['admin', 'rw']
     }
   },
@@ -141,18 +155,19 @@ export default {
       })
     },
     async save() {
-      this.dialog = false
-      // save new user to mongo db
-      const res = await API.addNewUser(this.newUser)
-      console.log(res)
-      // update the ui
-      const user = await API.getAllUsers()
-      this.users = user.users
+      if (this.$refs.form.validate()) {
+        // save new user to mongo db
+        await API.addNewUser(this.newUser)
+        // update the ui
+        const user = await API.getAllUsers()
+        this.users = user.users
 
-      // clean the dialog content
-      this.$nextTick(() => {
-        this.newUser = Object.assign({}, this.emptyUser)
-      })
+        this.dialog = false
+        // clean the dialog content
+        this.$nextTick(() => {
+          this.newUser = Object.assign({}, this.emptyUser)
+        })
+      }
     },
     deleteItem(item) {
       this.editedIndex = this.users.indexOf(item)
@@ -171,6 +186,14 @@ export default {
         this.editedItem = Object.assign({}, this.emptyUser)
         this.editedIndex = -1
       })
+    }
+  },
+  watch: {
+    dialog(val) {
+      val || this.close()
+    },
+    dialogDelete(val) {
+      val || this.closeDelete()
     }
   }
 }
