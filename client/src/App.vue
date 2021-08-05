@@ -1,31 +1,5 @@
 <template>
-  <v-app>
-    <v-navigation-drawer v-model="drawer" app>
-      <v-list-item>
-        <v-list-item-content>
-          <v-list-item-title>Social Listening Tool</v-list-item-title>
-          <v-list-item-subtitle>Console</v-list-item-subtitle>
-        </v-list-item-content>
-      </v-list-item>
-      <v-divider></v-divider>
-      <v-list dense>
-        <v-list-item-group color="primary">
-          <v-list-item v-for="(item, i) in items" :key="i" :to="item.link" link>
-            <v-list-item-icon>
-              <v-icon v-text="item.icon"></v-icon>
-            </v-list-item-icon>
-            <v-list-item-content>
-              <v-list-item-title v-text="item.title"></v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list-item-group>
-      </v-list>
-    </v-navigation-drawer>
-    <v-app-bar app>
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title>Social Listening Tool Console</v-toolbar-title>
-    </v-app-bar>
-
+  <v-app app>
     <v-main class="mx-5 mt-2">
       <router-view></router-view>
     </v-main>
@@ -33,18 +7,3 @@
 </template>
 
 <script>
-
-export default {
-  name: 'App',
-  data() {
-    return {
-      drawer: false,
-      items: [
-        { title: 'User Management', icon: 'mdi-account-multiple', link: '/' },
-        { title: 'Universe Overview', icon: 'mdi-database', link: '/universe-overview' },
-        { title: 'About', icon: 'mdi-help-box', link: '/about' }
-      ]
-    }
-  }
-}
-</script>
