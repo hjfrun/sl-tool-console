@@ -11,16 +11,11 @@
 - [x] search universe
 - [x] download all universes
 - [ ] ~~add Google OAuth~~
-- [ ] Login Page
+- [x] Login Page
+- [ ] enter to login in login page
 - [ ] deploy to Azure
 - [ ] ~~CDN~~
+- [ ] show existing universes
 - [ ] 
 
-
-
-Wording
-
-- [ ] Social Listening Tool Console
-- [ ] existing first
-- [ ] row number
 - [ ] 
