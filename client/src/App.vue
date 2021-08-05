@@ -6,4 +6,5 @@
   </v-app>
 </template>
 
-<script>
+<style lang="scss" scoped>
+</style>

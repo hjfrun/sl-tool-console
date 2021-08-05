@@ -55,10 +55,6 @@ export default {
           value: 'name'
         },
         {
-          text: 'Status',
-          value: 'status'
-        },
-        {
           text: 'Volume',
           value: 'volume',
           filterable: false
@@ -88,7 +84,6 @@ export default {
       return {
         id: e._id,
         name: e.name,
-        status: e.status,
         volume: e.data_volume.toLocaleString('en'),
         owner: e.access_control.owner,
         updated_time: e.universe_updated_time
@@ -99,14 +94,13 @@ export default {
   },
   methods: {
     downloadBtnClick() {
-      const header = ['name', 'status', 'volume', 'owner', 'updated_time', 'id']
+      const header = ['name', 'volume', 'owner', 'updated_time', 'id']
       const universesSheet = XLSX.utils.json_to_sheet(this.universes, { header })
       universesSheet.A1.v = 'Name'
-      universesSheet.B1.v = 'Status'
-      universesSheet.C1.v = 'Volume'
-      universesSheet.D1.v = 'Owner'
-      universesSheet.E1.v = 'Updated Time'
-      universesSheet.F1.v = 'ID'
+      universesSheet.B1.v = 'Volume'
+      universesSheet.C1.v = 'Owner'
+      universesSheet.D1.v = 'Updated Time'
+      universesSheet.E1.v = 'ID'
 
       const wb = XLSX.utils.book_new()
       XLSX.utils.book_append_sheet(wb, universesSheet, 'universes')
