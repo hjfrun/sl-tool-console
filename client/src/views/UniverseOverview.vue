@@ -104,9 +104,9 @@ export default {
       universesSheet.A1.v = 'ID'
       universesSheet.B1.v = 'Name'
       universesSheet.C1.v = 'Status'
-      universesSheet.A1.v = 'Volume'
-      universesSheet.B1.v = 'Owner'
-      universesSheet.C1.v = 'Updated Time'
+      universesSheet.D1.v = 'Volume'
+      universesSheet.E1.v = 'Owner'
+      universesSheet.F1.v = 'Updated Time'
 
       const wb = XLSX.utils.book_new()
       XLSX.utils.book_append_sheet(wb, universesSheet, 'universes')
