@@ -31,6 +31,7 @@
             :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
             @click:append="showPassword = !showPassword"
             :rules="passwordRules"
+            @keydown="keydownClick"
             required
           />
         </v-card-text>
@@ -70,6 +71,11 @@ export default {
 
       sessionStorage.token = 'admin-login'
       this.$router.push('/')
+    },
+    keydownClick(key) {
+      if (key.key === 'Enter') {
+        this.login()
+      }
     }
   }
 }
