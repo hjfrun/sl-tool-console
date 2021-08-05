@@ -7,7 +7,7 @@
 - [x] add user
 - [x] delete user
 - [x] download user list
-- [x] fetch all universes
+- [x] fetch existing universes
 - [x] search universe
 - [x] download all universes
 - [ ] ~~add Google OAuth~~
@@ -15,7 +15,9 @@
 - [ ] enter to login in login page
 - [ ] deploy to Azure
 - [ ] ~~CDN~~
-- [ ] show existing universes
-- [ ] 
 
-- [ ] 
+
+
+## Bug list
+
+- [ ] list scroll issue keep the bar at the top

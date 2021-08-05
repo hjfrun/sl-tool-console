@@ -13,7 +13,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 // database connection
-mongoose.connect(process.env.DB_URI, {
+mongoose.connect(process.env.PROD_DB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
