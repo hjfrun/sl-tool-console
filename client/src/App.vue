@@ -4,7 +4,7 @@
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title>Social Listening Tool</v-list-item-title>
-          <v-list-item-subtitle>Backend Management</v-list-item-subtitle>
+          <v-list-item-subtitle>Console</v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
       <v-divider></v-divider>
@@ -23,7 +23,7 @@
     </v-navigation-drawer>
     <v-app-bar app>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title>SL Admin</v-toolbar-title>
+      <v-toolbar-title>Social Listening Tool Console</v-toolbar-title>
     </v-app-bar>
 
     <v-main class="mx-5 mt-2">

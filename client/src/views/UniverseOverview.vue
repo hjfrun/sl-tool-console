@@ -18,7 +18,7 @@
     >
       <template v-slot:top>
         <v-toolbar flat>
-          <v-toolbar-title>All Universe List</v-toolbar-title>
+          <v-toolbar-title>Universe List</v-toolbar-title>
           <v-spacer></v-spacer>
           <v-text-field
             v-model="search"
@@ -51,11 +51,6 @@ export default {
       universeLoading: true,
       headers: [
         {
-          text: 'ID',
-          value: 'id',
-          filterable: false
-        },
-        {
           text: 'Name',
           value: 'name'
         },
@@ -75,6 +70,11 @@ export default {
         {
           text: 'Updated Time',
           value: 'updated_time',
+          filterable: false
+        },
+        {
+          text: 'ID',
+          value: 'id',
           filterable: false
         }
       ],
@@ -99,14 +99,14 @@ export default {
   },
   methods: {
     downloadBtnClick() {
-      const header = ['id', 'name', 'status', 'volume', 'owner', 'updated_time']
+      const header = ['name', 'status', 'volume', 'owner', 'updated_time', 'id']
       const universesSheet = XLSX.utils.json_to_sheet(this.universes, { header })
-      universesSheet.A1.v = 'ID'
-      universesSheet.B1.v = 'Name'
-      universesSheet.C1.v = 'Status'
-      universesSheet.D1.v = 'Volume'
-      universesSheet.E1.v = 'Owner'
-      universesSheet.F1.v = 'Updated Time'
+      universesSheet.A1.v = 'Name'
+      universesSheet.B1.v = 'Status'
+      universesSheet.C1.v = 'Volume'
+      universesSheet.D1.v = 'Owner'
+      universesSheet.E1.v = 'Updated Time'
+      universesSheet.F1.v = 'ID'
 
       const wb = XLSX.utils.book_new()
       XLSX.utils.book_append_sheet(wb, universesSheet, 'universes')
