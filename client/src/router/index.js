@@ -20,7 +20,6 @@ const routes = [
   },
   {
     path: '/',
-    name: 'main',
     component: Main,
     children: [
       {

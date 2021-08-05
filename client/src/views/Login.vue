@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-content>
+    <v-main>
       <v-alert
         class="mx-auto"
         v-model="alert"
@@ -42,7 +42,7 @@
           >
         </v-card-actions>
       </v-card>
-    </v-content>
+    </v-main>
   </v-app>
 </template>
 <script>
