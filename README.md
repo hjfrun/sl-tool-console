@@ -55,7 +55,7 @@ Similar to the above, build and move the dist to the **server **folder. We need 
 - [x] fetch existing universes
 - [x] search universe
 - [x] download all universes
-- [x] Login Page
+- [x] login Page
 - [x] adapt to small screen
 - [x] enter to login in login page
 - [x] deploy to Azure
