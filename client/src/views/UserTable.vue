@@ -38,12 +38,16 @@
                 color="indigo"
                 class="mx-2 mb-2"
                 @click="downloadBtnClick"
-                >Download
-                <v-icon class="pl-2" dark> mdi-cloud-download </v-icon>
+                ><span class="pr-2" v-show="$vuetify.breakpoint.name !== 'xs'"
+                  >Download</span
+                >
+                <v-icon dark> mdi-cloud-download </v-icon>
               </v-btn>
               <v-btn color="cyan" dark class="mb-2" v-bind="attrs" v-on="on">
-                New User
-                <v-icon class="pl-2" dark> mdi-account-plus </v-icon>
+                <span class="pr-2" v-show="$vuetify.breakpoint.name !== 'xs'"
+                  >New User</span
+                >
+                <v-icon dark> mdi-account-plus </v-icon>
               </v-btn>
             </template>
             <v-card>
