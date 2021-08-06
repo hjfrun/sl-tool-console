@@ -57,7 +57,8 @@ export default {
         {
           text: 'Volume',
           value: 'volume',
-          filterable: false
+          filterable: false,
+          sort: (a, b) => parseFloat(a.replace(/,/g, '')) - parseFloat(b.replace(/,/g, ''))
         },
         {
           text: 'Owner',

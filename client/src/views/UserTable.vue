@@ -144,7 +144,8 @@ export default {
         {
           text: 'Last Login Time',
           align: 'end',
-          value: 'last_login_time'
+          value: 'last_login_time',
+          sortable: false
         },
         {
           text: 'Actions',
