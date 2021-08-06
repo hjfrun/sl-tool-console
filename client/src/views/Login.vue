@@ -46,6 +46,8 @@
   </v-app>
 </template>
 <script>
+import md5 from 'md5'
+
 export default {
   name: 'Login',
   data() {
@@ -64,7 +66,7 @@ export default {
   },
   methods: {
     login() {
-      if (this.username !== 'owsocial' || this.password !== 'owsocial') {
+      if (md5(this.username) !== '02ce67a2fdd76d12b1178c799b30c647' || md5(this.password) !== '02ce67a2fdd76d12b1178c799b30c647') {
         this.alert = true
         return
       }
