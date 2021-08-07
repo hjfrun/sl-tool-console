@@ -41,7 +41,6 @@
 <script>
 import moment from 'moment'
 import XLSX from 'xlsx'
-import API from '../api'
 
 export default {
   name: 'UniverseOverview',
@@ -80,7 +79,7 @@ export default {
   },
   async created() {
     this.universeLoading = true
-    const universes = await API.getAllUniverses()
+    const { data: universes } = await this.$http.get('/universe')
     this.universes = universes.map(e => {
       return {
         id: e._id,

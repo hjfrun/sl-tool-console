@@ -46,8 +46,6 @@
   </v-app>
 </template>
 <script>
-import axios from 'axios'
-import API from '../api'
 
 export default {
   name: 'Login',
@@ -68,8 +66,8 @@ export default {
   methods: {
     async login() {
       try {
-        const res = await API.login(this.user)
-        const { token } = res
+        const res = await this.$http.post('/login', this.user)
+        const { token } = res.data
         sessionStorage.token = token
         this.$router.push('/')
       } catch (err) {

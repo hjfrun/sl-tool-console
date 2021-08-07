@@ -125,7 +125,6 @@
 <script>
 import moment from 'moment'
 import XLSX from 'xlsx'
-import API from '../api'
 
 export default {
   name: 'UserTable',
@@ -178,20 +177,23 @@ export default {
       roles: ['admin', 'rw']
     }
   },
-  async created() {
+  created() {
     this.userLoading = true
-    const user = await API.getAllUsers()
-    this.users = user.users.map(e => {
-      if (Object.prototype.hasOwnProperty.call(e, 'last_login_time')) {
-        e.last_login_time = moment(e.last_login_time).format('YYYY-MM-DD HH:mm:ss')
-      } else {
-        e.last_login_time = 'Never'
-      }
-      return e
-    })
+    this.refreshUserList()
     this.userLoading = false
   },
   methods: {
+    async refreshUserList() {
+      const { data } = await this.$http.get('/user')
+      this.users = data.users.map(e => {
+        if (Object.prototype.hasOwnProperty.call(e, 'last_login_time')) {
+          e.last_login_time = moment(e.last_login_time).format('YYYY-MM-DD HH:mm:ss')
+        } else {
+          e.last_login_time = 'Never'
+        }
+        return e
+      })
+    },
     close() {
       this.dialog = false
       this.$nextTick(() => {
@@ -206,10 +208,9 @@ export default {
           this.alert = true
         } else {
           // save new user to mongo db
-          await API.addNewUser(this.newUser)
+          await this.$http.post('/user', this.newUser)
           // update the ui
-          const user = await API.getAllUsers()
-          this.users = user.users
+          this.refreshUserList()
         }
         this.close()
       }
@@ -221,7 +222,7 @@ export default {
     },
     async deleteItemConfirm() {
       // send request to delete in db
-      await API.deleteUser(this.editedItem.email)
+      await this.$http.delete(`/user/${this.editedItem.email}`)
       this.users.splice(this.editedIndex, 1)
       this.closeDelete()
     },
@@ -255,6 +256,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-</style>

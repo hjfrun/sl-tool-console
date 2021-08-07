@@ -9,6 +9,6 @@ router.post('/user/', API.addNewUser)
 router.delete('/user/:email', API.deleteUser)
 router.get('/universe/', API.fetchAllUniverses)
 
-router.post('/login', API.login)
+// router.post('/login', API.login)
 
 module.exports = router
