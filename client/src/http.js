@@ -1,5 +1,4 @@
 import axios from 'axios'
-import Vue from 'vue'
 import router from './router'
 
 const http = axios.create({
@@ -10,10 +9,6 @@ http.interceptors.response.use(res => {
   return res
 }, err => {
   if (err.response.data.message) {
-    // Vue.prototype.$message({
-    //   type: 'error',
-    //   message: err.response.data.message
-    // })
     // notify the user to login in case the token is invalid
     if (err.response.status === 401) {
       router.push('/login')
