@@ -4,7 +4,7 @@ This tool console is an internal management system for the `Social Listening Too
 
 ## Outline
 
-This project consists a front-end and a back-end. The front-end is in the **client**folder, and the back-end is the **server**. The back-end queries the `MongoDB` and returns to the front-end through the `API`.
+This project consists a front-end and a back-end. The front-end is in the **client** folder, and the back-end is the **server**. The back-end queries the `MongoDB` and returns to the front-end through the `API`.
 
 This is a typical `MEVN` full stack project for practice purposes. `MEVN` these 4 letters respectively indicate `MongoDb` / `ExpressJS` / `Vue` / `NodeJS`.
 
@@ -42,7 +42,7 @@ There are many ways to deploy to a remote server. Here are two methods I have su
 
 ### Deploy to Azure App Service
 
-Similar to the above, build and move the dist to the **server **folder. We need to deploy the **server** folder to the `Azure App Service`. I recommend to use the `VS code` extension to deploy. This is quite easy. Refer: [Deploy Express.js to Azure App Service using Visual Studio Code](https://docs.microsoft.com/en-us/azure/developer/javascript/tutorial/deploy-nodejs-azure-app-service-with-visual-studio-code?tabs=bash)
+Similar to the above, build and move the dist to the **server** folder. We need to deploy the **server** folder to the `Azure App Service`. I recommend to use the `VS code` extension to deploy. This is quite easy. Refer: [Deploy Express.js to Azure App Service using Visual Studio Code](https://docs.microsoft.com/en-us/azure/developer/javascript/tutorial/deploy-nodejs-azure-app-service-with-visual-studio-code?tabs=bash)
 
 
 ## Feature list
@@ -59,6 +59,8 @@ Similar to the above, build and move the dist to the **server **folder. We need 
 - [x] adapt to small screen
 - [x] enter to login in login page
 - [x] deploy to Azure
+- [ ] jwt
+- [ ] 
 
 
 
