@@ -4,6 +4,11 @@ const userUrl = '/api/user'
 const universeUrl = '/api/universe'
 
 export default class API {
+  static async login(user) {
+    const res = await axios.post('/api/login', user)
+    return res.data
+  }
+
   static async getAllUsers() {
     const res = await axios.get(userUrl)
     return res.data

@@ -9,7 +9,7 @@
         max-width="600"
         border="left"
         dismissible
-        >Please enter the corrent username and password!</v-alert
+        >{{ errorMessage }}</v-alert
       >
       <v-card width="500" class="login-card" elevatino="6">
         <v-card-title style="justify-content: center"
@@ -18,14 +18,14 @@
         <v-card-text>
           <v-text-field
             label="Username"
-            v-model="username"
+            v-model="user.username"
             prepend-icon="mdi-account-circle"
             :rules="nameRules"
             required
           />
           <v-text-field
             label="Password"
-            v-model="password"
+            v-model="user.password"
             :type="showPassword ? 'text' : 'password'"
             prepend-icon="mdi-lock"
             :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
@@ -46,16 +46,17 @@
   </v-app>
 </template>
 <script>
-import md5 from 'md5'
+import axios from 'axios'
+import API from '../api'
 
 export default {
   name: 'Login',
   data() {
     return {
       alert: false,
-      username: '',
-      password: '',
+      user: {},
       showPassword: false,
+      errorMessage: '',
       nameRules: [
         v => !!v || 'Username is required'
       ],
@@ -65,14 +66,17 @@ export default {
     }
   },
   methods: {
-    login() {
-      if (md5(this.username) !== '02ce67a2fdd76d12b1178c799b30c647' || md5(this.password) !== '02ce67a2fdd76d12b1178c799b30c647') {
+    async login() {
+      try {
+        const res = await API.login(this.user)
+        const { token } = res
+        sessionStorage.token = token
+        this.$router.push('/')
+      } catch (err) {
+        const { message } = err.response.data
+        this.errorMessage = message
         this.alert = true
-        return
       }
-
-      sessionStorage.token = 'admin-login'
-      this.$router.push('/')
     },
     keydownClick(key) {
       if (key.key === 'Enter') {

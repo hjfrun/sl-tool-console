@@ -1,6 +1,29 @@
+const assert = require('http-assert')
 const Config = require('../models/config')
 
+const admin_password_hash = require('bcrypt').hashSync(process.env.PASSWORD || 'owsocial', 10)
+
+
 module.exports = class API {
+  // user login
+  static async login(req, res) {
+    try {
+      const { username, password } = req.body
+      // handle user not exist
+      assert(username === process.env.USERNAME, 422, 'User Not Exist!')
+
+      // invalid password
+      const isValid = require('bcrypt').compareSync(password, admin_password_hash)
+      assert(isValid, 422, 'Wrong Password!')
+
+      // return token
+      const token = require('jsonwebtoken').sign({ id: username }, 'OWSOCIAL_TOOL_CONSOLE')
+      res.send({ token })
+    } catch (err) {
+      res.status(err.statusCode || 500).send({ message: err.message })
+    }
+  }
+
   // fetch all users
   static async fetchAllUsers(req, res) {
     try {

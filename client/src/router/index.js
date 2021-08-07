@@ -45,7 +45,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (!to.meta.isPublic && sessionStorage.token !== 'admin-login') {
+  if (!to.meta.isPublic && !sessionStorage.token) {
     return next('/login')
   }
   next()
