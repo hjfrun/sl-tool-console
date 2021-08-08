@@ -10,11 +10,11 @@ module.exports = class API {
     try {
       const { username, password } = req.body
       // handle user not exist
-      assert(username === process.env.USERNAME, 422, 'User Not Exist!')
+      assert(username === process.env.USERNAME, 422, 'Please enter the correct username!')
 
       // invalid password
       const isValid = require('bcrypt').compareSync(password, admin_password_hash)
-      assert(isValid, 422, 'Wrong Password!')
+      assert(isValid, 422, 'Please enter the correct password!')
 
       // return token
       const token = require('jsonwebtoken').sign({ id: username }, 'OWSOCIAL_TOOL_CONSOLE')

@@ -65,6 +65,18 @@ export default {
   },
   methods: {
     async login() {
+      if (Object.prototype.hasOwnProperty.call(this.user, 'username') === false || this.user.username === '') {
+        this.errorMessage = 'Please enter the username!'
+        this.alert = true
+        return
+      }
+
+      if (Object.prototype.hasOwnProperty.call(this.user, 'password') === false || this.user.password === '') {
+        this.errorMessage = 'Please enter the password!'
+        this.alert = true
+        return
+      }
+
       try {
         const res = await this.$http.post('/login', this.user)
         const { token } = res.data
