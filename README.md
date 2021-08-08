@@ -59,10 +59,7 @@ Similar to the above, build and move the dist to the **server** folder. We need 
 - [x] adapt to small screen
 - [x] enter to login in login page
 - [x] deploy to Azure
-- [ ] jwt
-- [ ] 
-
-
+- [x] jwt
 
 ## Bug list
 

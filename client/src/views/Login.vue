@@ -63,6 +63,12 @@ export default {
       ]
     }
   },
+  created() {
+    if (this.$route.params.message) {
+      this.errorMessage = this.$route.params.message
+      this.alert = true
+    }
+  },
   methods: {
     async login() {
       if (Object.prototype.hasOwnProperty.call(this.user, 'username') === false || this.user.username === '') {

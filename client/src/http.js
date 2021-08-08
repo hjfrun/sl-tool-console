@@ -11,7 +11,7 @@ http.interceptors.response.use(res => {
   if (err.response.data.message) {
     // notify the user to login in case the token is invalid
     if (err.response.status === 401) {
-      router.push('/login')
+      router.push({ name: 'login', params: { message: err.response.data.message } })
     }
   }
   return Promise.reject(err)
