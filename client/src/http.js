@@ -19,7 +19,7 @@ http.interceptors.response.use(res => {
 
 http.interceptors.request.use(config => {
   if (sessionStorage.token) {
-    config.headers.Authorization = 'Bearer ' + sessionStorage.token
+    config.headers.Authorization = `Bearer ${sessionStorage.token}`
   }
   return config
 })

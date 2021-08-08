@@ -8,7 +8,7 @@ module.exports = options => {
       assert(token, 401, 'Please login first!')
 
       // extract token
-      const { id: username } = jwt.verify(token, 'OWSOCIAL_TOOL_CONSOLE')
+      const { id: username } = jwt.verify(token, process.env.TOKEN_SECRET)
       assert(username === process.env.USERNAME, 401, 'Invalid user!')
       await next()
     } catch (err) {
