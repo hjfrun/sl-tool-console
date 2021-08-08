@@ -8,8 +8,8 @@ module.exports = options => {
       assert(token, 401, 'Please login first!')
 
       // extract token
-      const username = jwt.verify(token, 'OWSOCIAL_TOOL_CONSOLE')
-      assert(username, 401, 'Please login first')
+      const { id: username } = jwt.verify(token, 'OWSOCIAL_TOOL_CONSOLE')
+      assert(username === process.env.USERNAME, 401, 'Invalid user!')
       await next()
     } catch (err) {
       res.status(err.statusCode || 500).send({ message: err.message })
