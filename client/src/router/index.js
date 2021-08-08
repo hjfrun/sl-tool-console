@@ -46,7 +46,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (!to.meta.isPublic && !sessionStorage.token) {
-    return next({ name: 'login', params: { message: 'Please login first' } })
+    return next('/login')
   }
   next()
 })
