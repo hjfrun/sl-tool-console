@@ -51,27 +51,34 @@ export default {
       headers: [
         {
           text: 'Name',
-          value: 'name'
+          value: 'name',
+          width: '40%'
         },
         {
           text: 'Volume',
           value: 'volume',
+          align: 'start',
           filterable: false,
+          width: '10%',
           sort: (a, b) => parseFloat(a.replace(/,/g, '')) - parseFloat(b.replace(/,/g, ''))
         },
         {
           text: 'Owner',
-          value: 'owner'
+          value: 'owner',
+          width: '20%'
         },
         {
           text: 'Updated Time',
           value: 'updated_time',
-          filterable: false
+          align: 'end',
+          filterable: false,
+          width: '15%'
         },
         {
           text: 'ID',
           value: 'id',
-          filterable: false
+          filterable: false,
+          width: '15%'
         }
       ],
       universes: []

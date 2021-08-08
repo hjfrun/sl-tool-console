@@ -137,24 +137,28 @@ export default {
         {
           text: 'Email',
           align: 'start',
-          value: 'email'
+          value: 'email',
+          width: '50%'
         },
         {
           text: 'Role',
           align: 'start',
-          value: 'role'
+          value: 'role',
+          width: '10%'
         },
         {
           text: 'Last Login Time',
           align: 'end',
           value: 'last_login_time',
-          sortable: false
+          sortable: false,
+          width: '25%'
         },
         {
           text: 'Actions',
           align: 'center',
           value: 'actions',
-          sortable: false
+          sortable: false,
+          width: '15%'
         }
       ],
       users: [],
