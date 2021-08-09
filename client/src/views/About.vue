@@ -16,7 +16,7 @@
       <li>search universe</li>
       <li>adapt to small screen(mobile)</li>
       <li>login & logout</li>
-      <li>jwt-security mechanism</li>
+      <li>jwt security mechanism</li>
       <li>deploy to Azure</li>
     </ul>
   </div>
