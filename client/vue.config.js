@@ -8,7 +8,7 @@ module.exports = {
   chainWebpack: config => {
     config.plugin('html')
       .tap(args => {
-        args[0].title = 'SL - Tool Console'
+        args[0].title = 'SL - Tool Management Platform'
         return args
       })
   }

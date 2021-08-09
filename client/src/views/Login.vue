@@ -13,7 +13,7 @@
       >
       <v-card width="500" class="login-card" elevatino="6">
         <v-card-title style="justify-content: center"
-          >Social Listening Tool Console</v-card-title
+          >Social Listening Tool Management Platform</v-card-title
         >
         <v-card-text>
           <v-text-field

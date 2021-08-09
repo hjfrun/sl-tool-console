@@ -70,7 +70,7 @@
                     dense
                   ></v-select>
                   <v-icon>info</v-icon>
-                  rw: read-write rights, for normal user
+                  Read-Write: Represent normal user
                 </v-card-text>
                 <v-card-actions>
                   <v-spacer></v-spacer>
@@ -178,7 +178,16 @@ export default {
         v => !!v || 'E-mail is required',
         v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) || 'E-mail must be valid'
       ],
-      roles: ['admin', 'rw']
+      roles: [
+        {
+          text: 'Admin',
+          value: 'admin'
+        },
+        {
+          text: 'Read-Write',
+          value: 'rw'
+        }
+      ]
     }
   },
   created() {
@@ -195,6 +204,7 @@ export default {
         } else {
           e.last_login_time = 'Never'
         }
+        e.role = e.role === 'admin' ? 'Admin' : 'Read-Write'
         return e
       })
     },

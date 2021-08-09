@@ -1,6 +1,9 @@
 <template>
   <div>
-    <p>This is an internal management platform of the Social Listening Tool.</p>
+    <p>
+      This is an internal management platform of the Social Listening Tool. It
+      provodes quick access to user lists and universe overview.
+    </p>
     <h3>Feature list</h3>
     <ul>
       <li>fetch all users</li>
