@@ -1,9 +1,6 @@
 <template>
   <div>
-    <p>
-      This is an internal tool of the Social Listening Tool. Please
-      <strong>DO NOT</strong> abuse it.
-    </p>
+    <p>This is an internal management platform of the Social Listening Tool.</p>
     <h3>Feature list</h3>
     <ul>
       <li>fetch all users</li>

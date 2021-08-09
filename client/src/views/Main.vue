@@ -4,7 +4,7 @@
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title>Social Listening Tool</v-list-item-title>
-          <v-list-item-subtitle>Console</v-list-item-subtitle>
+          <v-list-item-subtitle>Management Platform</v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
       <v-divider></v-divider>
@@ -23,7 +23,7 @@
     </v-navigation-drawer>
     <v-app-bar app>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title>Social Listening Tool Console</v-toolbar-title>
+      <v-toolbar-title>Social Listening Tool Management</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn text @click="logout"
         >Logout
