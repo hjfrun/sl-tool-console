@@ -71,13 +71,11 @@ export default {
           text: 'Updated Time',
           value: 'updated_time',
           align: 'end',
-          filterable: false,
           width: '15%'
         },
         {
           text: 'ID',
           value: 'id',
-          filterable: false,
           width: '15%'
         }
       ],

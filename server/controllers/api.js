@@ -17,7 +17,7 @@ module.exports = class API {
       assert(isValid, 422, 'Please enter the correct password!')
 
       // return token
-      const token = require('jsonwebtoken').sign({ id: username }, process.env.TOKEN_SECRET, { expiresIn: '3600s' })
+      const token = require('jsonwebtoken').sign({ id: username }, process.env.TOKEN_SECRET, { expiresIn: '10800s' })
       res.send({ token })
     } catch (err) {
       res.status(err.statusCode || 500).send({ message: err.message })

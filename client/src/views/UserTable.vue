@@ -138,13 +138,13 @@ export default {
           text: 'Email',
           align: 'start',
           value: 'email',
-          width: '50%'
+          width: '45%'
         },
         {
           text: 'Role',
           align: 'start',
           value: 'role',
-          width: '10%'
+          width: '15%'
         },
         {
           text: 'Last Login Time',
@@ -255,7 +255,7 @@ export default {
       usersSheet.C1.v = 'Last Login Time'
 
       const wb = XLSX.utils.book_new()
-      XLSX.utils.book_append_sheet(wb, usersSheet, 'accounts')
+      XLSX.utils.book_append_sheet(wb, usersSheet, 'users')
       const timeTag = moment().format('YYYYMMDDHHmmss')
       XLSX.writeFile(wb, `SL-${timeTag}-users.xlsx`)
     }
