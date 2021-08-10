@@ -150,7 +150,6 @@ export default {
           text: 'Last Login Time',
           align: 'end',
           value: 'last_login_time',
-          sortable: false,
           width: '25%'
         },
         {
