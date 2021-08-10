@@ -47,7 +47,7 @@ export default {
   data() {
     return {
       search: '',
-      universeLoading: true,
+      universeLoading: false,
       headers: [
         {
           text: 'Name',

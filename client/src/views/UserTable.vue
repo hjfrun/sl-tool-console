@@ -132,7 +132,7 @@ export default {
     return {
       alert: false,
       search: '',
-      userLoading: true,
+      userLoading: false,
       headers: [
         {
           text: 'Email',
@@ -190,12 +190,11 @@ export default {
     }
   },
   created() {
-    this.userLoading = true
     this.refreshUserList()
-    this.userLoading = false
   },
   methods: {
     async refreshUserList() {
+      this.userLoading = true
       const { data } = await this.$http.get('/user')
       this.users = data.users.map(e => {
         if (Object.prototype.hasOwnProperty.call(e, 'last_login_time')) {
@@ -206,6 +205,7 @@ export default {
         e.role = e.role === 'admin' ? 'Admin' : 'Read-Write'
         return e
       })
+      this.userLoading = false
     },
     close() {
       this.dialog = false
